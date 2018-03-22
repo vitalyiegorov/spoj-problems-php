@@ -11,3 +11,4 @@ Your program is to use the brute-force approach in order to find the Answer to L
 | 3 | 88    |   88   |
 | 4 | 42    |        |
 | 5 | 99    |        |
+|--------------------|
