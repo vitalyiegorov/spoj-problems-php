@@ -1,5 +1,5 @@
 # PRIME1 - Prime Generator
-\#number-theory
+[#number-theory](http://www.spoj.com/problems/tag/number-theory)
 
 # Task
 Peter wants to generate some prime numbers for his cryptosystem. Help him! Your task is to generate all prime numbers between two given numbers!
