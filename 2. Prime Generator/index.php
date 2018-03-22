@@ -9,6 +9,38 @@ declare(strict_types=1);
  * Time: 15:07
  */
 
+/**
+ * Get prime number array.
+ *
+ * @param int $end Integer maximum value
+ * @param array $primes Initial primes data
+ * @return array Primes collection in [$start, $end] range
+ */
+function getPrimes(int $end = PHP_INT_MAX, array $primes = [2, 3, 5, 7, 11, 13]): array
+{
+    $primesCount = count($primes);
+    $maxPrime = max($primes);
+
+    // Iterate from maximum existing prime number + 1 to limit
+    for ($i = $maxPrime + 1; $i <= $end; $i++) {
+        $isPrime = true;
+
+        // Check division with existing primes
+        for ($j = 0; $j < $primesCount; $j++) {
+            if ($i % $primes[$j] === 0) {
+                $isPrime = false;
+                break;
+            }
+        }
+
+        if ($isPrime) {
+            $primes[$primesCount++] = $i;
+        }
+    }
+
+    return $primes;
+}
+
 while (1) {
     // Reset
     $m = $n = null;
@@ -17,22 +49,14 @@ while (1) {
     fscanf(STDIN, "%d %d", $m, $n);
 
     // Set default constrains for second empty argument
-    $n = $n ?? $m;
+    $n = (int)($n ?? $m);
 
-    // numbers to be checked as prime
-    for ($i = $m; $i <= $n; $i++) {
-
-        $counter = 0;
-        // Check all divisible factors
-        for ($j = 1; $j <= $i; $j++) {
-            if ($i % $j === 0) {
-                $counter++;
-            }
-        }
-
-        // prime requires 2 rules ( divisible by 1 and divisible by itself)
-        if ($counter === 2) {
-            print "$i\n";
+    $output = '';
+    foreach (getPrimes($n) as $prime) {
+        if ($m <= $prime && $prime <= $n) {
+            $output .= $prime . "\n";
         }
     }
+
+    print $output;
 }
