@@ -16,7 +16,7 @@ declare(strict_types=1);
  * @param array $primes Initial primes data
  * @return array Primes collection in [$start, $end] range
  */
-function getPrimes(int $end = PHP_INT_MAX, array $primes = [2, 3, 5, 7, 11, 13]): array
+function getPrimes(int $end = PHP_INT_MAX, array &$primes = [2, 3, 5, 7, 11, 13]): array
 {
     $primesCount = count($primes);
     $maxPrime = max($primes);
@@ -41,6 +41,9 @@ function getPrimes(int $end = PHP_INT_MAX, array $primes = [2, 3, 5, 7, 11, 13])
     return $primes;
 }
 
+// For caching
+$primes = [2, 3, 5, 7, 11, 13];
+
 while (1) {
     // Reset
     $m = $n = null;
@@ -51,8 +54,10 @@ while (1) {
     // Set default constrains for second empty argument
     $n = (int)($n ?? $m);
 
+    $primes = getPrimes($n, $primes);
+
     $output = '';
-    foreach (getPrimes($n) as $prime) {
+    foreach ($primes as $prime) {
         if ($m <= $prime && $prime <= $n) {
             $output .= $prime . "\n";
         }
