@@ -5,7 +5,7 @@ Your program is to use the brute-force approach in order to find the Answer to L
 
 ## Example
  n | Input | Output 
----|-------|--------
+---|------:|-------:
  1 | 1     |    1   
  2 | 2     |    2   
  3 | 88    |   88   
