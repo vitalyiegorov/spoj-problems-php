@@ -1,4 +1,4 @@
-# spoj-problems-php
+# SPOJ classical problems solved with PHP
 SPOJ PHP [classical problem solving](http://www.spoj.com/problems/classical). 
 This repository contains solutions in a separate numbered folder.
 
