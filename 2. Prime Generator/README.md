@@ -12,8 +12,8 @@ For every test case print all prime numbers p such that m <= p <= n, one number 
 
  n | Input | Output 
 :--|------:|-------:
- 1 | 1     |    1   
- 2 | 1 10  | 3 5 7  
+ 1 | 2     |    2   
+ 2 | 1 10  | 2 3 5 7  
  3 | 3 5   |  3 5   
 
 >Warning: large Input/Output data, be careful with certain languages (though most should be OK if the algorithm is well designed)
