@@ -53,24 +53,19 @@ function getPrimes(int $end = PHP_INT_MAX, array &$primes = [2, 3, 5, 7, 11, 13,
 // For caching
 $primes = [2, 3, 5, 7, 11, 13, 17];
 
-while (1) {
-    // Reset
-    $m = $n = null;
+// Read input
+fscanf(STDIN, "%d %d", $m, $n);
 
-    // Read input
-    fscanf(STDIN, "%d %d", $m, $n);
+// Set default constrains for second empty argument
+$n = (int)($n ?? $m);
 
-    // Set default constrains for second empty argument
-    $n = (int)($n ?? $m);
+$primes = getPrimes($n, $primes);
 
-    $primes = getPrimes($n, $primes);
-
-    $output = '';
-    foreach ($primes as $prime) {
-        if ($m <= $prime && $prime <= $n) {
-            $output .= $prime . "\n";
-        }
+$output = '';
+foreach ($primes as $prime) {
+    if ($m <= $prime && $prime <= $n) {
+        $output .= $prime . "\n";
     }
-
-    print $output;
 }
+
+print $output;
