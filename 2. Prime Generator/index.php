@@ -57,12 +57,10 @@ for ($i = 0; $i < $t; $i++) {
     // Read inputs
     fscanf(STDIN, "%d %d", $m, $n);
 
-
     // Set default constrains for second empty argument
     $n = (int)($n ?? $m);
 
     $primes = getPrimes($n, $primes);
-
 
     foreach ($primes as $prime) {
         if ($m <= $prime && $prime <= $n) {
