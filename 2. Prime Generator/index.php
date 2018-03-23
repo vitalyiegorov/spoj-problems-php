@@ -16,30 +16,43 @@ declare(strict_types=1);
  * @param array $primes Initial primes data
  * @return array Primes collection in [$start, $end] range
  */
-function getPrimes(int $end = PHP_INT_MAX, array &$primes = [2, 3, 5, 7, 11, 13]): array
+function getPrimes(int $end = PHP_INT_MAX, array &$primes = [2, 3, 5, 7, 11, 13, 17]): array
 {
     $primesCount = count($primes);
-    $maxPrime = max($primes);
 
     // Iterate from maximum existing prime number + 1 to limit
-    for ($i = $maxPrime + 1; $i <= $end; $i++) {
-        $isPrime = true;
-        $cap = sqrt($i)+1;
+    for ($i = 2; $i <= $end; $i += 6) {
+        $isFirstPrime = true;
+        $isSecondPrime = true;
+        $first = 1 + $i;
+        $second = 5 + $i;
+        $cap = sqrt($second) + 1;
 
         // Check division with existing primes
         for ($j = 0; $j < $primesCount; $j++) {
-            if ($j >= $cap) {
+            if ($isFirstPrime && ($first % $primes[$j] === 0)) {
+                $isFirstPrime = false;
+            }
+
+            if ($isSecondPrime && ($second % $primes[$j] === 0)) {
+                $isSecondPrime = false;
+            }
+
+            if (!$isFirstPrime && !$isSecondPrime) {
                 break;
             }
 
-            if ($i % $primes[$j] === 0) {
-                $isPrime = false;
+            if ($j >= $cap) {
                 break;
             }
         }
 
-        if ($isPrime) {
-            $primes[$primesCount++] = $i;
+        if ($isFirstPrime) {
+            $primes[$primesCount++] = $first;
+        }
+
+        if ($isSecondPrime) {
+            $primes[$primesCount++] = $second;
         }
     }
 
