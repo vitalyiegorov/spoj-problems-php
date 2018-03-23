@@ -19,9 +19,10 @@ declare(strict_types=1);
 function getPrimes(int $end = PHP_INT_MAX, array &$primes = [2, 3, 5, 7, 11, 13, 17]): array
 {
     $primesCount = count($primes);
+    $maxPrime = max($primes) - 1;
 
     // Iterate from maximum existing prime number + 1 to limit
-    for ($i = 2; $i <= $end; $i += 6) {
+    for ($i = $maxPrime; $i <= $end; $i += 6) {
         $isFirstPrime = true;
         $isSecondPrime = true;
         $first = 1 + $i;
