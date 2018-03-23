@@ -24,7 +24,6 @@ function getPrimes(int $end = PHP_INT_MAX, array &$primes = [2, 3, 5, 7, 11, 13,
     // Iterate from maximum existing prime number + 1 to limit
     for ($i = $maxPrime; $i <= $end; $i += 6) {
         $isFirstPrime = true;
-        $isSecondPrime = true;
         $first = 1 + $i;
         $second = 5 + $i;
         $cap = sqrt($second) + 1;
